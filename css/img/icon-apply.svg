@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-apply</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-apply" fill="#FFFFFF">
+            <g id="Page-1" transform="translate(1.222591, 1.222591)">
+                <path d="M2.56023614,-0.000256049219 L2.56023614,10.2417127 L3.84048223,10.2417127 L3.84048223,1.27999004 L12.8022049,1.27999004 L12.8022049,7.68122051 L19.2047156,7.68122051 L19.2047156,19.2034354 L10.2417127,19.2034354 L10.2417127,20.4836814 L20.4836814,20.4836814 L20.4836814,6.39841393 L14.0850115,-0.000256049219 L2.56023614,-0.000256049219 Z M14.082451,1.80617119 L18.675974,6.40097442 L14.082451,6.40097442 L14.082451,1.80617119 Z" id="Fill-1"></path>
+                <polygon id="Fill-2" points="6.40174257 12.8020769 0.000512098437 12.8020769 0.000512098437 16.6440954 6.40174257 16.6440954 6.40174257 19.2033073 12.8016928 14.722446 6.40174257 10.2415847"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

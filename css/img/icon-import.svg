@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-import</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-import" fill="#FFFFFF">
+            <path d="M4.47333061,1.99975264 L4.47333061,11.8940645 L5.71011959,11.8940645 L5.71011959,3.23654163 L14.3676425,3.23654163 L14.3676425,9.42048654 L20.5528242,9.42048654 L20.5528242,20.5515874 L11.8940645,20.5515874 L11.8940645,21.7883764 L21.7883764,21.7883764 L21.7883764,8.18122398 L15.606905,1.99975264 L4.47333061,1.99975264 Z M15.6044315,3.7448619 L20.0420303,8.18369756 L15.6044315,8.18369756 L15.6044315,3.7448619 Z" id="Fill-1"></path>
+            <polygon id="Fill-2" points="8.18443963 14.3675188 2.00049472 14.3675188 2.00049472 18.0791225 8.18443963 18.0791225 8.18443963 20.5514637 14.3671478 16.2227023 8.18443963 11.8939408"></polygon>
+        </g>
+    </g>
+</svg>

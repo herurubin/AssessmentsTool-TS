@@ -1,0 +1,236 @@
+label{
+    font-family: FidelitySans;
+    font-weight: 300;
+}
+
+.container-full{
+    width: 100%;
+    padding: 1em;
+}
+
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.green-header{
+    background-color: #6F9824;
+    border-radius:0;
+}
+
+.navbar-brand{
+    color: #FFFFFF !important;
+    font-family: FidelitySans;
+    font-weight: 400;
+}
+
+.app-window{
+    border: 2px solid #CECECE;
+    border-radius: .25em;
+    background-color: #FFFFFF;
+    background-clip: padding-box;
+    outline: 0;
+    position: absolute;
+    z-index: 10000;
+    padding: 1em 1em 4em 1em;;
+}
+
+.flyout-footer{
+    margin-bottom: 0!important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.col-5up {
+    width: 20%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left
+}
+
+.flyout-menu{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.btn-cancel:hover{
+    color: #fff;
+    background-color: #191919;
+}
+
+.btn-apply:hover{
+    color: #fff;
+    background-color: #011E31;
+}
+
+#general-settings-app{
+    position: relative;
+}
+
+.btn-apply{
+    color: #fff;
+    background-color: #024A7A;
+    border-color: #023C62;
+    font-size: 1rem !important;
+    margin-right: .2em;
+    padding: 4px 8px 4px 8px !important;
+}
+
+#move-up{
+    margin-right: 0!important;
+}
+
+.btn-cancel{
+    color: #fff;
+    background-color: #333333;
+    border-color: #F2F2F2;
+    font-size: .75em !important;
+    padding: 4px !important;
+}
+
+.btn-delete{
+    color: #fff;
+    background-color: #870E0E;
+    border-color: #5A0909;
+    font-size: 1rem !important;
+    margin-right: .5em;
+    margin-left: .8em;
+    padding: 4px !important;
+}
+
+.btn-delete:hover{
+    background-color: #E01616;
+}
+
+.btn-saveAll{
+    color: #fff;
+    background-color: #0D6F3F;
+    border-color: #0D6F3F;
+    font-size: 1rem !important;
+    margin-right: .5em;
+    padding: 4px !important;
+}
+
+.btn-saveAll:hover{
+    color: #FFFFFF;
+    background-color: #094927;
+}
+
+.btn-delete:hover{
+    color: #FFFFFF;
+}
+
+
+
+.translucent{
+    background-image: url("img/white-translucent.png");
+    background-size: contain;
+    background-repeat: repeat;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.carat-down{
+    background-image: url("img/carat-down.svg");
+    background-size: contain;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    background-repeat: no-repeat;
+    transform: translate(0, 2px);
+    left: calc(50% - 1em);
+    z-index: 10000;
+    display: none;
+}
+
+.btn-save{
+    position: absolute;
+    float: right !important;
+    right: 0;
+}
+
+.btn-label{
+    position: relative;
+    top: 50%;
+    transform: translateY(-30%);
+    display: inline-block;
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+.width-full{
+    width: 100%;
+}
+
+
+.icon-up{ background-image: url("img/icon-up.svg"); }
+
+.icon-down{background-image: url("img/icon-down.svg"); }
+
+.icon-add{background-image: url("img/icon-add.svg")}
+
+.icon-save{ background-image: url("img/icon-save.svg"); }
+
+.icon-dup{ background-image: url("img/icon-duplicate.svg");}
+
+.icon-delete{ background-image: url("img/icon-delete.svg");}
+
+
+
+.statusbar-icon{
+    height: 2em;
+    width: 2em;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: contain;
+    margin-top: 2px
+}
+
+.active-header{
+    border-bottom: .3em solid #C6D6A8;
+}
+
+.active-header a:hover{
+    border-bottom: 0 !important; ;
+}
+
+
+
+.header-item a{
+    color: #FFFFFF;
+}
+
+.header-item a:hover  {
+    border-bottom: .3em solid #C6D6A8;
+    background: transparent !important;
+}
+
+
+.item-title{
+    font-size: 2em;
+    font-weight: 300;
+
+}
+
+.item-author{
+    font-size: 1em;
+    font-weight: 200;
+    margin-top: -6px;
+}
+
+.item-corpID{
+    font-size: 1em;
+    font-weight: 200;
+    margin-top: -6px;
+}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "app.js",
+    "sourceRoot": "./src",
+    "rootDir": "./",
+    "sourceMap": true,
+    "watch": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

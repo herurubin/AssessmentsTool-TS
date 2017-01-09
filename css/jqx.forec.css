@@ -1,0 +1,88 @@
+@font-face{
+    font-family: FidelitySans;
+    src: url("fonts/FidelitySans-Regular.woff");
+    font-weight: 300;
+}
+
+@font-face{
+    font-family: FidelitySans;
+    src: url("fonts/FidelitySans-Bold.woff");
+    font-weight: 400;
+}
+
+@font-face{
+    font-family: FidelitySans;
+    src: url("fonts/FidelitySans-Light.woff");
+    font-weight: 200;
+}
+
+@font-face{
+    font-family: FidelitySans;
+    src: url("fonts/FidelitySans-UltraLight.woff");
+    font-weight: 100;
+}
+
+.grid-base{
+    font-family: "FidelitySans";
+    font-weight: 300;
+}
+
+.jqx-fill-state-pressed {
+    background-color: #0a73a7 ;
+    color: #FFFFFF;
+    font-weight: 400 ;
+}
+
+.jqx-widget-header {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    -ms-touch-action: none;
+    -moz-background-clip: padding;
+    -webkit-text-size-adjust: none;
+    background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border-color: #999999;
+    background: transparent;
+    border-bottom: 3px solid #999999;
+    border-top: 0;
+}
+
+.jqx-grid{
+    border:  solid transparent ;
+    border-width: 0 1px 1px 1px;
+}
+
+.grid-footer{
+    background: #999999;
+    margin-bottom: 0 !important;
+    border-radius: 0 0 4px 4px;
+}
+
+.footer-menu{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.checked{
+    background-image: url("img/checked.svg");
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin: 0 !important;
+    left: calc(50% - 8px)!important;
+    position: relative;
+    top: calc(50% - 9px)!important;
+}
+
+.unchecked{
+    background-image: url("img/unchecked.svg");
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin: 0 !important;
+    left: calc(50% - 8px)!important;
+    position: relative;
+    top: calc(50% - 9px)!important;
+}

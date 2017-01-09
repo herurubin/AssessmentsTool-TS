@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-search</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.63087265,4.86818436 C12.2486014,4.86818436 14.3770654,7.30188602 14.3770654,10.2950166 C14.3770654,13.2869067 12.2486014,15.7218488 9.63087265,15.7218488 C7.01314392,15.7218488 4.88467987,13.2869067 4.88467987,10.2950166 C4.88467987,7.30188602 7.01314392,4.86818436 9.63087265,4.86818436 L9.63087265,4.86818436 Z M9.63087265,17.2723722 C11.0758849,17.2723722 12.4037341,16.6918562 13.4506086,15.7280508 L18.6426723,21.6957056 C18.7750232,21.8470367 18.9485983,21.9239427 19.1232582,21.9239427 C19.2957484,21.9239427 19.4693234,21.8482771 19.6016744,21.6969461 C19.8674612,21.3955243 19.8685461,20.9043184 19.6038441,20.6004158 L14.4041865,14.626559 C15.2330074,13.4357569 15.7320357,11.9311289 15.7320357,10.2937761 C15.7331205,6.44723747 12.9960589,3.31766087 9.63087265,3.31766087 C6.26568636,3.31766087 3.52862479,6.44723747 3.52862479,10.2950166 C3.52862479,14.1415552 6.26568636,17.2723722 9.63087265,17.2723722 L9.63087265,17.2723722 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="-1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0.828204719   0 0 0 0 0.828204719   0 0 0 0 0.828204719  0 0 0 0.5 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-search">
+            <g id="SVGID_1_-Copy-2">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#797979" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
