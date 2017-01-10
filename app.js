@@ -380,38 +380,6 @@ ApplyToSelected = function (target, situation) {
         $(target).jqxGrid('selectcell', rows.length - 1, 'section');
     }
 };
-var headerSettings = {
-    headerType: "greenSingleLine"
-};
-var MakeHeaderFunc;
-MakeHeaderFunc = function (settings, target, template) {
-    var headerSettings = settings;
-    switch (headerSettings.headerType) {
-        case "greenSingleLine":
-            $(target).append(template);
-            break;
-    }
-};
-var generalInfoTemplate = "\n<div id=\"general-settings-app\">\n<div class=\"translucent\" id=\"obscure-settings\"></div>\n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-this\">What is being assessed?</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-this\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-name\">Name this assessment:</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-name\">Your name:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-corpid\">Your Corporate ID number:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-corpid\">\n        </div>\n    </div>\n    \n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n             <div class=\"form-group\">\n              <label for=\"sel1\">Send this assessment to:</label>\n              <select class=\"form-control\" id=\"send-to\">\n                \n                <option>1</option>\n                <option>2</option>\n                <option>3</option>\n                <option>4</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          <div class=\"form-group\">\n              <label for=\"sel1\">Re-send the assessment this often:</label>\n              <select class=\"form-control\" id=\"sel1\">\n                <option>Once a month</option>\n                <option>Every quarter</option>\n                <option>Every 6 months</option>\n                <option>yearly</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          \n        </div>\n        <div class=\"col-lg-3\">            \n          \n        </div>\n     \n    \n</div>\n";
-var flyoutTemplate = "\n<div id=\"flyout\" class=\"app-window\" style=\"display: none;\">\n    <div id=\"edit-section\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">What section should this be grouped into?</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-section\">\n            </div>        \n    </div>\n\n    <div id=\"edit-question\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">Enter the question's text to display:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-question\">\n            </div>        \n    </div>\n    \n    <div id=\"edit-explain\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">Provide an explanation or context that will help the user answer:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-explain\">\n            </div>        \n    </div>\n    \n    <div id=\"edit-response\" class=\"row\">\n            <div class=\"col-5up\">            \n              <label for=\"input-r1\">Rated 1 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r1\">\n            </div> \n            \n            <div class=\"col-5up\">            \n              <label for=\"input-r2\">Rated 2 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r2\">\n            </div>\n            \n            <div class=\"col-5up\">            \n              <label for=\"input-r3\">Rated 3 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r3\">\n            </div>\n                        \n            <div class=\"col-5up\">            \n              <label for=\"input-r4\">Rated 4 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r4\">\n            </div>\n                        \n             <div class=\"col-5up\">            \n              <label for=\"input-r5\">Rated 5 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r5\">\n            </div>           \n    </div>\n    \n    <div id=\"edit-required\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"required-form\">Is this required?</label>\n              <form id=\"required-form\">\n                    <label class=\"radio-inline\">\n                      <input id=\"input-req\" type=\"radio\" name=\"opt-or-req\" value=\"required\" checked>Required\n                    </label>\n                    <label class=\"radio-inline\">\n                      <input id=\"input-opt\" type=\"radio\" name=\"opt-or-req\" value=\"optional\">Optional\n                    </label>                    \n              </form>\n            </div>        \n    </div>\n    <div class=\"row\">\n        <nav class=\"navbar flyout-footer\">\n          <div class=\"container-fluid flyout-menu\">\n           <ul class=\"nav navbar-nav\">\n              <li><button id=\"cancel-edit\" class=\"btn btn-cancel\">Cancel</button> </li>\n              <li><button id=\"apply\" class=\"btn btn-apply\">Apply</button></li>              \n            </ul>\n          </div>\n        </nav>\n    </div>\n</div>\n";
-var caratTemplate = "\n<div class=\"carat-down\" id=\"flyout-carat\"></div>\n";
-var RowManagement;
-(function (RowManagement) {
-    var Rows = (function () {
-        function Rows(gridSelector) {
-            this.gridSelector = gridSelector;
-            this.gridSelector = gridSelector;
-        }
-        Rows.prototype.addRow = function () {
-            $(this.gridSelector).jqxGrid('addrow', null, {});
-        };
-        Rows.prototype.deleteSelectedRows = function () {
-            console.log("delete selected");
-        };
-        return Rows;
-    }());
-    RowManagement.Rows = Rows;
-})(RowManagement || (RowManagement = {}));
 var GridManagement;
 (function (GridManagement) {
     var EditGrid = (function () {
@@ -453,7 +421,6 @@ SizeGridFunc = function (target) {
     var scrollSelector = "#" + "verticalScrollBar" + adjustedTarget;
     var scrollVis = $(scrollSelector).css('visibility');
     if (scrollVis == "hidden") {
-        console.log("scroll hidden");
     }
     else if (scrollVis == "visible") {
         var calcAdjusted = calcTotalWidth + 20;
@@ -616,65 +583,7 @@ GridInteractions = function (selectedGrid) {
         }
     });
 };
-var appSettings = {
-    creationGrid: ""
-};
-var navStates = { home: 1, createHome: 2, createItem: 3, fillOutHome: 4, fillOutItem: 5, dashboard: 6 };
-var currentNav = navStates.home;
-var Navigation;
-Navigation = function (navigation, quizStructure) {
-    switch (navigation) {
-        case navStates.createItem:
-            $("#sizing-container").empty().append(editItemTemplate);
-            subPortfoliosGrid.createGrid();
-            createGenSettings(generalInfoTemplate);
-            CreateFlyouts("#flyout-app", flyoutTemplate);
-            StatusbarInteractions("#subPortfoliosGrid");
-            ManageFocus("", "initial");
-            selectedCells = $("#subPortfoliosGrid").jqxGrid('getselectedcells');
-            if (selectedCells.length == 0) {
-                $("#obscure-settings").hide();
-                $("#flyout").hide();
-            }
-            if (quizStructure != null) {
-                $("#author-name").val(quizStructure[0].AuthorName);
-                $("#author-corpid").val(quizStructure[0].AuthorID);
-                $("#assess-name").val(quizStructure[0].name);
-                $("#assess-this").val(quizStructure[0].whatIsAssessed);
-            }
-            break;
-        case navStates.createHome:
-            $("#sizing-container").empty();
-            $("#sizing-container").append(assessmentsListHeader);
-            for (var i = 0; i < quizStructure.length; i++) {
-                var templateHolder = assessmentsListItem;
-                templateHolder = templateHolder.replace("{{title}}", quizStructure[i].name);
-                templateHolder = templateHolder.replace("{{author}}", quizStructure[i].AuthorName);
-                templateHolder = templateHolder.replace("{{corpID}}", quizStructure[i].AuthorID);
-                templateHolder = templateHolder.replace("{{whatIsAssessed}}", quizStructure[i].whatIsAssessed);
-                templateHolder = templateHolder.replace("{{btnID}}", quizStructure[i].name + "Edit");
-                $("#sizing-container").append(templateHolder);
-            }
-            break;
-    }
-};
-$(document).ready(function () {
-    MakeHeaderFunc(headerSettings, "#main-header", singleLineHeaderTemplate);
-    Navigation(navStates.createItem);
-    $(window).resize(function () {
-        setTimeout(function () {
-            SizeGridFunc("#subPortfoliosGrid");
-        }, 300);
-    });
-    setTimeout(function () {
-        SizeGridFunc("#subPortfoliosGrid");
-        GridInteractions("#subPortfoliosGrid");
-    }, 300);
-});
-var createGenSettings;
-createGenSettings = function (template) {
-    $("#generalSettings-app").append(template);
-};
+var singleLineHeaderTemplate = "\n\n<nav class=\"navbar green-header\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">Assessments Tool</a>\n    </div>\n    <ul class=\"nav navbar-nav\">\n      <li class=\"header-item active-header\"><a href=\"#\" id=\"home\">Home</a></li>\n      <li class=\"header-item\" ><a href=\"#\" id=\"create\">Create Assessments</a></li>\n      <li class=\"header-item\"><a href=\"#\" id=\"fill-out\">Fill Out Assessments</a></li>\n      <li class=\"header-item\"><a href=\"#\" id=\"dashboard\">Dashboard</a></li>\n    </ul>\n  </div>\n</nav>\n";
 var SaveLoad;
 SaveLoad = function (grid, situation, selectedItem) {
     var rows = $(grid).jqxGrid('getrows');
@@ -716,7 +625,95 @@ SaveLoad = function (grid, situation, selectedItem) {
                 }
             });
             break;
-        case "LoadAssessments":
+    }
+};
+var headerSettings = {
+    headerType: "greenSingleLine"
+};
+var quizStructure = [];
+var MakeHeaderFunc;
+MakeHeaderFunc = function (settings, target, template) {
+    var headerSettings = settings;
+    switch (headerSettings.headerType) {
+        case "greenSingleLine":
+            $(target).append(template);
+            break;
+    }
+    HeaderMenu("initialize");
+};
+var headerAction = function () {
+    $(this.id).click(function () {
+        HeaderMenu("#" + this.id);
+    });
+};
+var headerMenuSetup = [
+    {
+        id: "#home",
+        action: headerAction
+    }, {
+        id: "#create",
+        action: headerAction
+    }, {
+        id: "#fill-out",
+        action: headerAction
+    }, {
+        id: "#dashboard",
+        action: headerAction
+    }];
+var createGenSettings;
+createGenSettings = function (template) {
+    $("#generalSettings-app").append(template);
+};
+var HeaderMenu;
+var Navigation;
+Navigation = function (navigation, dataStructure) {
+    var quizStructure = dataStructure;
+    switch (navigation) {
+        case navStates.createItem:
+            $("#sizing-container").empty().append(editItemTemplate);
+            subPortfoliosGrid.createGrid();
+            createGenSettings(generalInfoTemplate);
+            CreateFlyouts("#flyout-app", flyoutTemplate);
+            StatusbarInteractions("#subPortfoliosGrid");
+            ManageFocus("", "initial");
+            selectedCells = $("#subPortfoliosGrid").jqxGrid('getselectedcells');
+            if (selectedCells.length == 0) {
+                $("#obscure-settings").hide();
+                $("#flyout").hide();
+            }
+            if (dataStructure != null) {
+                $("#author-name").val(quizStructure[0].AuthorName);
+                $("#author-corpid").val(quizStructure[0].AuthorID);
+                $("#assess-name").val(quizStructure[0].name);
+                $("#assess-this").val(quizStructure[0].whatIsAssessed);
+            }
+            break;
+        case navStates.createHome:
+            LoadExisting("LoadAllAssessments");
+            break;
+        case "createHome-complete":
+            $("#sizing-container").empty();
+            $("#sizing-container").append(assessmentsListHeader);
+            console.log("Quiz Structure", quizStructure);
+            for (var i = 0; i < quizStructure.length; i++) {
+                var templateHolder = assessmentsListItem;
+                templateHolder = templateHolder.replace("{{title}}", quizStructure[i].name);
+                templateHolder = templateHolder.replace("{{author}}", quizStructure[i].AuthorName);
+                templateHolder = templateHolder.replace("{{corpID}}", quizStructure[i].AuthorID);
+                templateHolder = templateHolder.replace("{{whatIsAssessed}}", quizStructure[i].whatIsAssessed);
+                templateHolder = templateHolder.replace("{{btnID}}", quizStructure[i].name + "Edit");
+                $("#sizing-container").append(templateHolder);
+            }
+            break;
+        case navStates.fillOutHome:
+            $("#sizing-container").empty();
+            break;
+    }
+};
+var LoadExisting;
+LoadExisting = function (situation, selectedItem) {
+    switch (situation) {
+        case "LoadAllAssessments":
             var assessmentsList = [];
             $.ajax({
                 url: 'SaveLoad.php',
@@ -728,7 +725,7 @@ SaveLoad = function (grid, situation, selectedItem) {
                     if (!data.error) {
                         var assessmentsAll = JSON.parse(data);
                         console.log("return messages from server: ", assessmentsAll);
-                        Navigation(navStates.createHome, assessmentsAll);
+                        Navigation("createHome-complete", assessmentsAll);
                     }
                     else { }
                 }
@@ -746,7 +743,8 @@ SaveLoad = function (grid, situation, selectedItem) {
                     if (!data.error) {
                         var assessmentsAll = JSON.parse(data);
                         console.log("return messages from server: ", assessmentsAll);
-                        Navigation(navStates.createItem, assessmentsAll);
+                        quizStructure = assessmentsAll;
+                        Navigation("createHome-complete");
                     }
                     else { }
                 }
@@ -754,7 +752,67 @@ SaveLoad = function (grid, situation, selectedItem) {
             break;
     }
 };
-var singleLineHeaderTemplate = "\n\n<nav class=\"navbar green-header\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">Assessments Tool</a>\n    </div>\n    <ul class=\"nav navbar-nav\">\n      <li class=\"header-item active-header\"><a href=\"#\">Home</a></li>\n      <li class=\"header-item\" ><a href=\"#\">Create Assessments</a></li>\n      <li class=\"header-item\"><a href=\"#\">Fill Out Assessments</a></li>\n      <li class=\"header-item\"><a href=\"#\">Dashboard</a></li>\n    </ul>\n  </div>\n</nav>\n\n\n\n";
+HeaderMenu = function (situation) {
+    switch (situation) {
+        case "initialize":
+            for (var i = 0; i < headerMenuSetup.length; i++) {
+                headerMenuSetup[i].action();
+            }
+            break;
+        case headerMenuSetup[0].id:
+            console.log(headerMenuSetup[0].id);
+            Navigation(navStates.createHome);
+            break;
+        case headerMenuSetup[1].id:
+            console.log(headerMenuSetup[1].id);
+            Navigation(navStates.fillOutHome);
+            break;
+        case headerMenuSetup[2].id:
+            console.log(headerMenuSetup[2].id);
+            break;
+        case headerMenuSetup[3].id:
+            console.log(headerMenuSetup[3].id);
+            break;
+    }
+};
+var appSettings = {
+    creationGrid: ""
+};
+var navStates = { home: 1, createHome: 2, createItem: 3, fillOutHome: 4, fillOutItem: 5, dashboard: 6 };
+var currentNav = navStates.home;
+$(document).ready(function () {
+    MakeHeaderFunc(headerSettings, "#main-header", singleLineHeaderTemplate);
+    Navigation(navStates.createItem);
+    $(window).resize(function () {
+        setTimeout(function () {
+            SizeGridFunc("#subPortfoliosGrid");
+        }, 300);
+    });
+    setTimeout(function () {
+        SizeGridFunc("#subPortfoliosGrid");
+        GridInteractions("#subPortfoliosGrid");
+    }, 300);
+});
+var generalInfoTemplate = "\n<div id=\"general-settings-app\">\n<div class=\"translucent\" id=\"obscure-settings\"></div>\n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-this\">What is being assessed?</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-this\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-name\">Name this assessment:</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-name\">Your name:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-corpid\">Your Corporate ID number:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-corpid\">\n        </div>\n    </div>\n    \n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n             <div class=\"form-group\">\n              <label for=\"sel1\">Send this assessment to:</label>\n              <select class=\"form-control\" id=\"send-to\">\n                \n                <option>1</option>\n                <option>2</option>\n                <option>3</option>\n                <option>4</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          <div class=\"form-group\">\n              <label for=\"sel1\">Re-send the assessment this often:</label>\n              <select class=\"form-control\" id=\"sel1\">\n                <option>Once a month</option>\n                <option>Every quarter</option>\n                <option>Every 6 months</option>\n                <option>yearly</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          \n        </div>\n        <div class=\"col-lg-3\">            \n          \n        </div>\n     \n    \n</div>\n";
+var flyoutTemplate = "\n<div id=\"flyout\" class=\"app-window\" style=\"display: none;\">\n    <div id=\"edit-section\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">What section should this be grouped into?</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-section\">\n            </div>        \n    </div>\n\n    <div id=\"edit-question\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">Enter the question's text to display:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-question\">\n            </div>        \n    </div>\n    \n    <div id=\"edit-explain\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">Provide an explanation or context that will help the user answer:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-explain\">\n            </div>        \n    </div>\n    \n    <div id=\"edit-response\" class=\"row\">\n            <div class=\"col-5up\">            \n              <label for=\"input-r1\">Rated 1 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r1\">\n            </div> \n            \n            <div class=\"col-5up\">            \n              <label for=\"input-r2\">Rated 2 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r2\">\n            </div>\n            \n            <div class=\"col-5up\">            \n              <label for=\"input-r3\">Rated 3 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r3\">\n            </div>\n                        \n            <div class=\"col-5up\">            \n              <label for=\"input-r4\">Rated 4 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r4\">\n            </div>\n                        \n             <div class=\"col-5up\">            \n              <label for=\"input-r5\">Rated 5 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r5\">\n            </div>           \n    </div>\n    \n    <div id=\"edit-required\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"required-form\">Is this required?</label>\n              <form id=\"required-form\">\n                    <label class=\"radio-inline\">\n                      <input id=\"input-req\" type=\"radio\" name=\"opt-or-req\" value=\"required\" checked>Required\n                    </label>\n                    <label class=\"radio-inline\">\n                      <input id=\"input-opt\" type=\"radio\" name=\"opt-or-req\" value=\"optional\">Optional\n                    </label>                    \n              </form>\n            </div>        \n    </div>\n    <div class=\"row\">\n        <nav class=\"navbar flyout-footer\">\n          <div class=\"container-fluid flyout-menu\">\n           <ul class=\"nav navbar-nav\">\n              <li><button id=\"cancel-edit\" class=\"btn btn-cancel\">Cancel</button> </li>\n              <li><button id=\"apply\" class=\"btn btn-apply\">Apply</button></li>              \n            </ul>\n          </div>\n        </nav>\n    </div>\n</div>\n";
+var caratTemplate = "\n<div class=\"carat-down\" id=\"flyout-carat\"></div>\n";
+var RowManagement;
+(function (RowManagement) {
+    var Rows = (function () {
+        function Rows(gridSelector) {
+            this.gridSelector = gridSelector;
+            this.gridSelector = gridSelector;
+        }
+        Rows.prototype.addRow = function () {
+            $(this.gridSelector).jqxGrid('addrow', null, {});
+        };
+        Rows.prototype.deleteSelectedRows = function () {
+            console.log("delete selected");
+        };
+        return Rows;
+    }());
+    RowManagement.Rows = Rows;
+})(RowManagement || (RowManagement = {}));
 var GridCreation;
 (function (GridCreation) {
     var CustomGrid = (function () {

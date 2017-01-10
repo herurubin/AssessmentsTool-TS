@@ -1,4 +1,6 @@
 /// <reference path="Initialization.ts" />
+/// <reference path="header.component.ts" />
+
 
 interface iSaveLoad{
     (saveFromThisGrid: string, situation: any, selectedItem?:string );
@@ -56,55 +58,9 @@ SaveLoad = function (grid, situation, selectedItem) {
 
         break;
 
-        case "LoadAssessments":
 
-            var assessmentsList:any=[];
-
-            $.ajax({
-                url:'SaveLoad.php',
-                data: {
-                    loadAllAssessments:"load_assessments"
-                },
-                type: 'POST',
-                success: function (data) {
-                    if(!data.error){
-                        var assessmentsAll = JSON.parse(data);
-                        console.log("return messages from server: ", assessmentsAll);
-                        Navigation(navStates.createHome,assessmentsAll)
-                    }else{}
-                }
-            });
-
-
-
-        break;
-
-        case "LoadSelected":
-            var selectedTitle:string = selectedItem;
-
-
-            $.ajax({
-                url:'LoadSelected.php',
-                data: {
-                    loadSelected: selectedItem
-                },
-                type: 'POST',
-                success: function (data) {
-                    if(!data.error){
-                        var assessmentsAll = JSON.parse(data);
-                        console.log("return messages from server: ", assessmentsAll);
-
-                        Navigation(navStates.createItem, assessmentsAll);
-                    }else{}
-                }
-            });
-
-
-        break;
     }
 
-
-
-
-
 }
+
+

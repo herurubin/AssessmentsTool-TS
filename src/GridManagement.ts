@@ -51,7 +51,7 @@ SizeGridFunc = function (target) {
     var scrollSelector = "#"+"verticalScrollBar"+adjustedTarget;
     var scrollVis :any = $(scrollSelector).css('visibility');
     if(scrollVis == "hidden"){
-        console.log("scroll hidden")
+        //console.log("scroll hidden")
     }else if(scrollVis == "visible"){
         var calcAdjusted:number = calcTotalWidth + 20;
         calcTotalWidth = calcAdjusted;

@@ -24,21 +24,33 @@
       <file leaf-file-name="SaveLoad.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SaveLoad.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="94" column="85" lean-forward="true" selection-start-line="94" selection-start-column="85" selection-end-line="94" selection-end-column="85" />
-              <folding />
+            <state relative-caret-position="1000">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Initialization.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Initialization.ts">
+      <file leaf-file-name="header.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/header.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state relative-caret-position="374">
+              <caret line="130" column="20" lean-forward="false" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Initialization.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Initialization.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,18 +73,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaveLoad.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SaveLoad.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="46" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="46" />
-              <folding>
-                <marker date="1483945107523" expanded="true" signature="267:292" ph="SELECT * FRO... assessments" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LoadSelected.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LoadSelected.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -85,12 +85,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app-specific.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/app-specific.css">
+      <file leaf-file-name="references.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/references.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+            <state relative-caret-position="68">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.template.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/templates/header.template.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <marker date="1484025845958" expanded="true" signature="65:583" ph="..." />
+                <marker date="1484025845958" expanded="true" signature="97:576" ph="..." />
+                <marker date="1484025845958" expanded="true" signature="129:200" ph="..." />
+                <marker date="1484025845958" expanded="true" signature="232:567" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,16 +133,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="35" column="83" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="35" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -143,10 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GridM</find>
-      <find>AddN</find>
-      <find>adapt</find>
-      <find>localDataSource</find>
       <find>templ</find>
       <find>col-lg-2</find>
       <find>statusbar</find>
@@ -173,12 +174,20 @@
       <find>cons</find>
       <find>appe</find>
       <find>echo</find>
+      <find>case navStates.createHome</find>
+      <find>retur</find>
+      <find>quizStructure</find>
+      <find>aj</find>
     </findStrings>
     <replaceStrings>
       <replace>lib</replace>
       <replace>libs</replace>
       <replace>col-5up</replace>
+      <replace>quizName</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\AssessmentsTool-TS\src</dir>
+    </dirStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -203,13 +212,9 @@
         <option value="$PROJECT_DIR$/src/templates/flyout.template.ts" />
         <option value="$PROJECT_DIR$/src/grid.component.ts" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/src/header.component.ts" />
         <option value="$PROJECT_DIR$/src/gridInteractions.component.ts" />
         <option value="$PROJECT_DIR$/css/jqx.forec.css" />
-        <option value="$PROJECT_DIR$/src/references.ts" />
         <option value="$PROJECT_DIR$/src/focusmanager.component.ts" />
-        <option value="$PROJECT_DIR$/src/GridManagement.ts" />
-        <option value="$PROJECT_DIR$/src/templates/header.template.ts" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/SaveLoad.php" />
@@ -219,8 +224,14 @@
         <option value="$PROJECT_DIR$/api.php" />
         <option value="$PROJECT_DIR$/src/templates/basePages.template.ts" />
         <option value="$PROJECT_DIR$/src/EnterData.ts" />
-        <option value="$PROJECT_DIR$/src/SaveLoad.ts" />
+        <option value="$PROJECT_DIR$/src/GridManagement.ts" />
+        <option value="$PROJECT_DIR$/src/templates/header.template.ts" />
         <option value="$PROJECT_DIR$/src/Initialization.ts" />
+        <option value="$PROJECT_DIR$/src/SaveLoad.ts" />
+        <option value="$PROJECT_DIR$/LoadExisting.ts" />
+        <option value="$PROJECT_DIR$/src/LoadExisting.ts" />
+        <option value="$PROJECT_DIR$/src/references.ts" />
+        <option value="$PROJECT_DIR$/src/header.component.ts" />
       </list>
     </option>
   </component>
@@ -303,6 +314,7 @@
       <recent name="C:\xampp\htdocs\AssessmentsTool-TS" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\AssessmentsTool-TS\src" />
       <recent name="C:\work\AssessmentsTool-TS\src" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
@@ -389,23 +401,23 @@
       <workItem from="1483302040097" duration="58909000" />
       <workItem from="1483503604546" duration="506000" />
       <workItem from="1483504118114" duration="31018000" />
-      <workItem from="1483844449418" duration="43601000" />
+      <workItem from="1483844449418" duration="53793000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163606000" />
+    <option name="totallyTimeSpent" value="173798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="589" y="25" width="1326" height="998" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.365991" sideWeight="0.45364583" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20763358" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2300578" sideWeight="0.45364583" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21484992" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.375" sideWeight="0.5028129" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20072116" sideWeight="0.49718705" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24393064" sideWeight="0.49718705" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22249691" sideWeight="0.49513304" order="7" side_tool="false" content_ui="tabs" />
@@ -431,14 +443,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/grid.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="31" lean-forward="false" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/manageRows.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -704,14 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gridInteractions.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -722,32 +718,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GridManagement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="38" column="83" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="38" selection-end-column="83" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/templates/header.template.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding>
-            <marker date="1483938729846" expanded="true" signature="65:532" ph="..." />
-            <marker date="1483938729846" expanded="true" signature="97:525" ph="..." />
-            <marker date="1483938729846" expanded="true" signature="129:200" ph="..." />
-            <marker date="1483938729846" expanded="true" signature="232:516" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -768,14 +743,6 @@
             <marker date="1483947319555" expanded="true" signature="159:1124" ph="..." />
             <marker date="1483947319555" expanded="true" signature="201:1115" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/references.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -820,7 +787,7 @@
         <state relative-caret-position="231">
           <caret line="154" column="75" lean-forward="false" selection-start-line="154" selection-start-column="75" selection-end-line="154" selection-end-column="75" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -860,18 +827,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SaveLoad.ts">
+    <entry file="file://$PROJECT_DIR$/src/GridManagement.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="94" column="85" lean-forward="true" selection-start-line="94" selection-start-column="85" selection-end-line="94" selection-end-column="85" />
+        <state relative-caret-position="178">
+          <caret line="53" column="10" lean-forward="false" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/templates/header.template.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <marker date="1484025845958" expanded="true" signature="65:583" ph="..." />
+            <marker date="1484025845958" expanded="true" signature="97:576" ph="..." />
+            <marker date="1484025845958" expanded="true" signature="129:200" ph="..." />
+            <marker date="1484025845958" expanded="true" signature="232:567" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/references.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoadExisting.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Initialization.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state relative-caret-position="646">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SaveLoad.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="130" column="20" lean-forward="false" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
