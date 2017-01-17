@@ -23,14 +23,8 @@ var generalInfoTemplate = `
     <div class="row">
         <div class="col-lg-3">            
              <div class="form-group">
-              <label for="sel1">Send this assessment to:</label>
-              <select class="form-control" id="send-to">
-                
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>        
+              <label for="sel1">Send to (List of Corporate IDs and Name pairs):</label>
+          <input type="text" class="form-control" id="email-list">
              </div>
         </div>
         <div class="col-lg-3">            
@@ -44,11 +38,9 @@ var generalInfoTemplate = `
               </select>        
              </div>
         </div>
-        <div class="col-lg-3">            
-          
+        <div class="col-lg-3">    
         </div>
-        <div class="col-lg-3">            
-          
+        <div class="col-lg-3"> 
         </div>
      
     

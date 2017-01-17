@@ -1,9 +1,7 @@
 /// <reference path="Initialization.ts" />
-
 /// <reference path="header.component.ts" />
 
 
-/// <reference path="SaveLoad.ts" />
 /// <reference path="EnterData.ts" />
 
 /// <reference path="flyouts.component.ts" />
@@ -19,6 +17,7 @@
 
 
 /// <reference path="GridManagement.ts" />
+/// <reference path="SaveLoad.ts" />
 /// <reference path="gridInteractions.component.ts" />
 
 /// <reference path="templates/header.template.ts" />

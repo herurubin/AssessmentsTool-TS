@@ -9,16 +9,13 @@ var appSettings : any ={
 }
 
 var navStates: any = {home:1, createHome:2, createItem:3, fillOutHome:4, fillOutItem:5, dashboard:6 };
-var currentNav: number = navStates.home;
-
-
+var currentNav: any = "home";
 
 
 $(document).ready(
     function () {
         MakeHeaderFunc(headerSettings, "#main-header", singleLineHeaderTemplate);
         Navigation(navStates.createItem);
-
 
 
         $(window).resize(function () {

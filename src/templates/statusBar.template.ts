@@ -1,4 +1,7 @@
+/// <reference path="../SaveLoad.ts" />
 /// <reference path="../GridManagement.ts" />
+
+
 
 var statusBarTemplate =`
 
@@ -18,38 +21,5 @@ var statusBarTemplate =`
   </div>
 </nav>
 `
-
-
-interface iAddRow {
-    (target:string)
-}
-
-let AddRow : iAddRow;
-AddRow= function (target) {
-    $(target).jqxGrid('addrow', null, {}, 'first' );
-}
-
-interface iStatusbarInteractions {
-    (target:string)
-}
-
-let StatusbarInteractions : iStatusbarInteractions;
-
-
-StatusbarInteractions = function (target) {
-
-    $("#add-new").click(function () {  $(target).jqxGrid('addrow', null, {}, 'last' );  });
-
-    $("#delete").click(function () {   DeleteSelectedRows("#subPortfoliosGrid");  });
-
-    $("#saveAll").click(function () {  SaveAll("#subPortfoliosGrid");  });
-
-    $("#duplicate").click(function () {   DuplicateSelected("#subPortfoliosGrid");  });
-
-    $("#move-up").click(function () {  ReorderRows("#subPortfoliosGrid","up");  });
-
-    $("#move-down").click(function () {  ReorderRows("#subPortfoliosGrid","down");  });
-
-};
 
 

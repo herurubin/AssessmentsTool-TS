@@ -59,6 +59,10 @@ label{
     transform: translateY(-50%);
 }
 
+.vert-cen{
+    transform: translateY(50%);
+}
+
 
 .btn-cancel:hover{
     color: #fff;
@@ -185,6 +189,10 @@ label{
 .icon-dup{ background-image: url("img/icon-duplicate.svg");}
 
 .icon-delete{ background-image: url("img/icon-delete.svg");}
+
+.icon-newDoc{ background-image: url("img/icon-NewDoc.svg");}
+
+.icon-edit{ background-image: url("img/icon_Edit.svg");}
 
 
 

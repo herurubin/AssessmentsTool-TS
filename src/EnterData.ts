@@ -128,22 +128,25 @@ ApplyToSelected = function (target,situation) {
 
         case "responses":
             var ratings:any = {
-                'r1' : $("#input-r1").val(),
-                'r2' : $("#input-r2").val(),
-                'r3' : $("#input-r3").val(),
-                'r4' : $("#input-r4").val(),
-                'r5' : $("#input-r5").val(),
+                r1 : $("#input-r1").val(),
+                r2 : $("#input-r2").val(),
+                r3 : $("#input-r3").val(),
+                r4 : $("#input-r4").val(),
+                r5 : $("#input-r5").val(),
             }
 
             targetDatafield = "responses";
 
             var dataValue = JSON.stringify(ratings);
 
-            for(var i:number=0; i<selectedCells.length; i++){
-                $(target).jqxGrid('setcellvalue', selectedCells[i].rowindex, "responsesData", dataValue);
+            if(dataValue != null || dataValue != ""){
+                for(var i:number=0; i<selectedCells.length; i++){
+                    $(target).jqxGrid('setcellvalue', selectedCells[i].rowindex, "responsesData", dataValue);
+                }
             }
 
-            value = `| 1 of 5: ${ratings.r1} | 2 of 5: ${ratings.r2} | 3 of 5: ${ratings.r3} |  4 of 5: ${ratings.r4} |  5 of 5: ${ratings.r4} `;
+
+            value = ` 1 of 5: ${ratings.r1}  2 of 5: ${ratings.r2}  3 of 5: ${ratings.r3}   4 of 5: ${ratings.r4}   5 of 5: ${ratings.r4} `;
             BulkFillData(target, targetDatafield, value);
 
             ManageFlyoutDisplay("#subPortfoliosGrid", "requiredClicked");
@@ -176,8 +179,6 @@ ApplyToSelected = function (target,situation) {
             }, 200);
 
         break;
-
-
     }
 
 

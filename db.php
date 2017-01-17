@@ -1,7 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: herur
- * Date: 1/11/2017
- * Time: 10:11 AM
- */
+ob_start();
+$connection = mysqli_connect('localhost', 'root', 'Assessments2017', 'assessments');
+
+?>

@@ -190,26 +190,32 @@ ManageFocus = function (target, situation) {
                     console.log(cell.value);
                     if (cell.value != "undefined" && cell.value != null && cell.value != "") {
                         var responsesObj = JSON.parse(cell.value);
-                        $("#input-r1").val(responsesObj.r1);
-                        $("#input-r2").val(responsesObj.r2);
-                        $("#input-r3").val(responsesObj.r3);
-                        $("#input-r4").val(responsesObj.r4);
-                        $("#input-r5").val(responsesObj.r5);
+                        setTimeout(function () {
+                            $("#input-r1").val(responsesObj.r1);
+                            $("#input-r2").val(responsesObj.r2);
+                            $("#input-r3").val(responsesObj.r3);
+                            $("#input-r4").val(responsesObj.r4);
+                            $("#input-r5").val(responsesObj.r5);
+                        }, 300);
                     }
                     else if (cell.value == "") {
+                        setTimeout(function () {
+                            $("#input-r1").val("");
+                            $("#input-r2").val("");
+                            $("#input-r3").val("");
+                            $("#input-r4").val("");
+                            $("#input-r5").val("");
+                        }, 300);
+                    }
+                }
+                else if (selectedCells.length > 1) {
+                    setTimeout(function () {
                         $("#input-r1").val("");
                         $("#input-r2").val("");
                         $("#input-r3").val("");
                         $("#input-r4").val("");
                         $("#input-r5").val("");
-                    }
-                }
-                else if (selectedCells.length > 1) {
-                    $("#input-r1").val("");
-                    $("#input-r2").val("");
-                    $("#input-r3").val("");
-                    $("#input-r4").val("");
-                    $("#input-r5").val("");
+                    }, 300);
                 }
             }, 200);
             $(window).unbind().keydown(function (event) {
@@ -335,18 +341,20 @@ ApplyToSelected = function (target, situation) {
             break;
         case "responses":
             var ratings = {
-                'r1': $("#input-r1").val(),
-                'r2': $("#input-r2").val(),
-                'r3': $("#input-r3").val(),
-                'r4': $("#input-r4").val(),
-                'r5': $("#input-r5").val(),
+                r1: $("#input-r1").val(),
+                r2: $("#input-r2").val(),
+                r3: $("#input-r3").val(),
+                r4: $("#input-r4").val(),
+                r5: $("#input-r5").val(),
             };
             targetDatafield = "responses";
             var dataValue = JSON.stringify(ratings);
-            for (var i = 0; i < selectedCells.length; i++) {
-                $(target).jqxGrid('setcellvalue', selectedCells[i].rowindex, "responsesData", dataValue);
+            if (dataValue != null || dataValue != "") {
+                for (var i = 0; i < selectedCells.length; i++) {
+                    $(target).jqxGrid('setcellvalue', selectedCells[i].rowindex, "responsesData", dataValue);
+                }
             }
-            value = "| 1 of 5: " + ratings.r1 + " | 2 of 5: " + ratings.r2 + " | 3 of 5: " + ratings.r3 + " |  4 of 5: " + ratings.r4 + " |  5 of 5: " + ratings.r4 + " ";
+            value = " 1 of 5: " + ratings.r1 + "  2 of 5: " + ratings.r2 + "  3 of 5: " + ratings.r3 + "   4 of 5: " + ratings.r4 + "   5 of 5: " + ratings.r4 + " ";
             BulkFillData(target, targetDatafield, value);
             ManageFlyoutDisplay("#subPortfoliosGrid", "requiredClicked");
             PositionFlyouts("#required", { enabled: true, width: "auto" });
@@ -379,137 +387,6 @@ ApplyToSelected = function (target, situation) {
         $(target).jqxGrid('addrow', null, {}, "last");
         $(target).jqxGrid('selectcell', rows.length - 1, 'section');
     }
-};
-var GridManagement;
-(function (GridManagement) {
-    var EditGrid = (function () {
-        function EditGrid(gridSelector) {
-            this.gridSelector = gridSelector;
-            this.gridSelector = gridSelector;
-        }
-        EditGrid.prototype.CreateNewRow = function () {
-            $(this.gridSelector).jqxGrid('addrow', null, {});
-        };
-        return EditGrid;
-    }());
-    GridManagement.EditGrid = EditGrid;
-    var SizeGrid = (function () {
-        function SizeGrid(sizingContainer) {
-            this.sizingContainer = sizingContainer;
-            this.sizingContainer = sizingContainer;
-        }
-        SizeGrid.prototype.SizeGrid = function () {
-            var screenSize = $(this.sizingContainer).width();
-            $(this.sizingContainer).jqxGrid({ width: screenSize });
-        };
-        return SizeGrid;
-    }());
-    GridManagement.SizeGrid = SizeGrid;
-})(GridManagement || (GridManagement = {}));
-var SizeGridMax = new GridManagement.SizeGrid("#sizing-container");
-var SizeGridFunc;
-SizeGridFunc = function (target) {
-    ($(target).jqxGrid('autoresizecolumns'));
-    var columns = ($(target).jqxGrid('columns'));
-    var columnsTotalWidth = 0;
-    for (var i = 0; i < columns.records.length - 1; i++) {
-        var indexColWidth = ($(target).jqxGrid('getcolumnproperty', columns.records[i].datafield, 'width'));
-        var calcTotalWidth = columnsTotalWidth + indexColWidth;
-        columnsTotalWidth = calcTotalWidth;
-    }
-    var adjustedTarget = target.replace("#", "");
-    var scrollSelector = "#" + "verticalScrollBar" + adjustedTarget;
-    var scrollVis = $(scrollSelector).css('visibility');
-    if (scrollVis == "hidden") {
-    }
-    else if (scrollVis == "visible") {
-        var calcAdjusted = calcTotalWidth + 20;
-        calcTotalWidth = calcAdjusted;
-        console.log("scroll visible");
-    }
-    var totalGridWidth = $(target).width();
-    var remainder = totalGridWidth - calcTotalWidth;
-    var addThisToEachColumn = remainder / (columns.records.length - 2);
-    for (var j = 1; j < columns.records.length - 1; j++) {
-        $(target).jqxGrid('autoresizecolumn', columns.records[j].datafield);
-        var indexColWidth = ($(target).jqxGrid('getcolumnproperty', columns.records[j].datafield, 'width'));
-        ($(target).jqxGrid('setcolumnproperty', columns.records[j].datafield, 'width', indexColWidth + addThisToEachColumn));
-    }
-    var gridPosition = $(target).position();
-    var screenHeight = $(window).height();
-    var calculatedHeight = screenHeight - gridPosition.top - 20;
-    ($(target).jqxGrid('height', calculatedHeight));
-};
-var ReorderRows;
-ReorderRows = function (targetGrid, upOrDown) {
-    var rows = $(targetGrid).jqxGrid('getrows');
-    var rowsHolding = [];
-    var rowsChecked = [];
-    var selectedindexes = [];
-    for (var i = 0; i < rows.length; i++) {
-        var newRow = {
-            checkbox: "unchecked",
-            explain: rows[i].explain,
-            mainQuestion: rows[i].mainQuestion,
-            required: rows[i].required,
-            responses: rows[i].responses,
-            section: rows[i].section
-        };
-        if (rows[i].checkbox == "checked") {
-            newRow.checkbox = "checked";
-            selectedindexes.push(i);
-            rowsChecked.push(newRow);
-        }
-        else {
-            newRow.checkbox = "unchecked";
-            rowsHolding.push(newRow);
-        }
-    }
-    switch (upOrDown) {
-        case "up":
-            if (selectedindexes[0] != 0) {
-                rowsHolding.splice(selectedindexes[0] - 1, 0, rowsChecked);
-            }
-            else {
-                rowsHolding.splice(selectedindexes[0], 0, rowsChecked);
-            }
-            break;
-        case "down":
-            rowsHolding.splice(selectedindexes[0] + 1, 0, rowsChecked);
-            break;
-    }
-    $(targetGrid).jqxGrid('clear');
-    for (var k = 0; k < rowsHolding.length; k++) {
-        $(targetGrid).jqxGrid('addrow', k, rowsHolding[k]);
-    }
-};
-var DeleteSelectedRows;
-DeleteSelectedRows = function (targetGrid) {
-    var rows = $(targetGrid).jqxGrid('getrows');
-    var deleteThese = [];
-    for (var i = 0; i < rows.length; i++) {
-        var id = $(targetGrid).jqxGrid('getrowid', i);
-        if (rows[i].checkbox == "checked") {
-            deleteThese.push(id);
-        }
-    }
-    for (var i = 0; i < deleteThese.length; i++) {
-        $(targetGrid).jqxGrid('deleterow', deleteThese[i]);
-    }
-};
-var statusBarTemplate = "\n\n<nav class=\"navbar grid-footer\">\n  <div class=\"container-fluid footer-menu width-full\">\n   <ul class=\"nav navbar-nav width-full\">\n      <li><button id=\"add-new\" class=\"btn btn-apply\"><div class=\"btn-label\">Add New Question</div> <div class=\"icon-add statusbar-icon\"></div></button> </li>\n      <li><button id=\"duplicate\" class=\"btn btn-apply\"><div class=\"btn-label\">Duplicate Selected </div><div class=\"icon-dup statusbar-icon\"></div></button></li>\n      \n      \n      <li><button id=\"move-up\" class=\"btn btn-apply\"><div class=\"icon-up statusbar-icon\"> </div></button></li>\n      <li><button id=\"move-down\" class=\"btn btn-apply\"><div class=\"icon-down statusbar-icon\"> </div></button></li>\n      \n      <li><button id=\"delete\" class=\"btn btn-delete\"><div class=\"btn-label\">Delete Selected</div> <div class=\"icon-delete statusbar-icon\"></div></button></li>\n      <li class=\"btn-save\"><button id=\"saveAll\" class=\"btn btn-saveAll \"><div class=\"btn-label\">Save Assessment</div>  <div class=\"icon-save statusbar-icon\"></div> </button></li>\n    </ul>\n  </div>\n</nav>\n";
-var AddRow;
-AddRow = function (target) {
-    $(target).jqxGrid('addrow', null, {}, 'first');
-};
-var StatusbarInteractions;
-StatusbarInteractions = function (target) {
-    $("#add-new").click(function () { $(target).jqxGrid('addrow', null, {}, 'last'); });
-    $("#delete").click(function () { DeleteSelectedRows("#subPortfoliosGrid"); });
-    $("#saveAll").click(function () { SaveAll("#subPortfoliosGrid"); });
-    $("#duplicate").click(function () { DuplicateSelected("#subPortfoliosGrid"); });
-    $("#move-up").click(function () { ReorderRows("#subPortfoliosGrid", "up"); });
-    $("#move-down").click(function () { ReorderRows("#subPortfoliosGrid", "down"); });
 };
 var selectedCells = [];
 var GridInteractions;
@@ -584,53 +461,148 @@ GridInteractions = function (selectedGrid) {
     });
 };
 var singleLineHeaderTemplate = "\n\n<nav class=\"navbar green-header\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">Assessments Tool</a>\n    </div>\n    <ul class=\"nav navbar-nav\">\n      <li class=\"header-item active-header\"><a href=\"#\" id=\"home\">Home</a></li>\n      <li class=\"header-item\" ><a href=\"#\" id=\"create\">Create Assessments</a></li>\n      <li class=\"header-item\"><a href=\"#\" id=\"fill-out\">Fill Out Assessments</a></li>\n      <li class=\"header-item\"><a href=\"#\" id=\"dashboard\">Dashboard</a></li>\n    </ul>\n  </div>\n</nav>\n";
-var SaveLoad;
-SaveLoad = function (grid, situation, selectedItem) {
-    var rows = $(grid).jqxGrid('getrows');
-    var transferObject = [];
-    switch (situation) {
-        case "SaveNew":
-            var assessmentInfo = {
-                whatIsAssessed: $("#assess-this").val(),
-                AssessmentName: $("#assess-name").val(),
-                YourName: $("#author-name").val(),
-                CorpID: $("#author-corpid").val(),
-            };
-            for (var i = 0; i < rows.length; i++) {
-                var rowObj = {
-                    section: rows[i].section,
-                    checkbox: rows[i].checkbox,
-                    explain: rows[i].explain,
-                    mainQuestion: rows[i].mainQuestion,
-                    required: rows[i].required,
-                    responses: rows[i].responses,
-                    responsesData: JSON.parse(rows[i].responsesData)
-                };
-                console.log(rows[i].responsesData);
-                transferObject.push(rowObj);
+var GridManagement;
+(function (GridManagement) {
+    var EditGrid = (function () {
+        function EditGrid(gridSelector) {
+            this.gridSelector = gridSelector;
+            this.gridSelector = gridSelector;
+        }
+        EditGrid.prototype.CreateNewRow = function () {
+            $(this.gridSelector).jqxGrid('addrow', null, {});
+        };
+        return EditGrid;
+    }());
+    GridManagement.EditGrid = EditGrid;
+    var SizeGrid = (function () {
+        function SizeGrid(sizingContainer) {
+            this.sizingContainer = sizingContainer;
+            this.sizingContainer = sizingContainer;
+        }
+        SizeGrid.prototype.SizeGrid = function () {
+            var screenSize = $(this.sizingContainer).width();
+            $(this.sizingContainer).jqxGrid({ width: screenSize });
+        };
+        return SizeGrid;
+    }());
+    GridManagement.SizeGrid = SizeGrid;
+})(GridManagement || (GridManagement = {}));
+var SizeGridMax = new GridManagement.SizeGrid("#sizing-container");
+var SizeGridFunc;
+SizeGridFunc = function (target) {
+    if (currentNav.hasGrid == true) {
+        ($(target).jqxGrid('autoresizecolumns'));
+        var columns = ($(target).jqxGrid('columns'));
+        var columnsTotalWidth = 0;
+        for (var i = 0; i < columns.records.length - 1; i++) {
+            var indexColWidth = ($(target).jqxGrid('getcolumnproperty', columns.records[i].datafield, 'width'));
+            var calcTotalWidth = columnsTotalWidth + indexColWidth;
+            columnsTotalWidth = calcTotalWidth;
+        }
+        var adjustedTarget = target.replace("#", "");
+        var scrollSelector = "#" + "verticalScrollBar" + adjustedTarget;
+        var scrollVis = $(scrollSelector).css('visibility');
+        if (scrollVis == "hidden") {
+        }
+        else if (scrollVis == "visible") {
+            var calcAdjusted = calcTotalWidth + 20;
+            calcTotalWidth = calcAdjusted;
+            console.log("scroll visible");
+        }
+        var totalGridWidth = $(target).width();
+        var remainder = totalGridWidth - calcTotalWidth;
+        var addThisToEachColumn = remainder / (columns.records.length - 2);
+        for (var j = 1; j < columns.records.length - 1; j++) {
+            $(target).jqxGrid('autoresizecolumn', columns.records[j].datafield);
+            var indexColWidth = ($(target).jqxGrid('getcolumnproperty', columns.records[j].datafield, 'width'));
+            ($(target).jqxGrid('setcolumnproperty', columns.records[j].datafield, 'width', indexColWidth + addThisToEachColumn));
+        }
+        var gridPosition = $(target).position();
+        var screenHeight = $(window).height();
+        var calculatedHeight = screenHeight - gridPosition.top - 20;
+        ($(target).jqxGrid('height', calculatedHeight));
+    }
+};
+var ReorderRows;
+ReorderRows = function (targetGrid, upOrDown) {
+    var rows = $(targetGrid).jqxGrid('getrows');
+    var rowsHolding = [];
+    var rowsChecked = [];
+    var selectedindexes = [];
+    for (var i = 0; i < rows.length; i++) {
+        var newRow = {
+            checkbox: "unchecked",
+            explain: rows[i].explain,
+            mainQuestion: rows[i].mainQuestion,
+            required: rows[i].required,
+            responses: rows[i].responses,
+            section: rows[i].section
+        };
+        if (rows[i].checkbox == "checked") {
+            newRow.checkbox = "checked";
+            selectedindexes.push(i);
+            rowsChecked.push(newRow);
+        }
+        else {
+            newRow.checkbox = "unchecked";
+            rowsHolding.push(newRow);
+        }
+    }
+    switch (upOrDown) {
+        case "up":
+            if (selectedindexes[0] != 0) {
+                rowsHolding.splice(selectedindexes[0] - 1, 0, rowsChecked);
             }
-            $.ajax({
-                url: 'api.php',
-                data: {
-                    assessment: {
-                        assessmentInfo: assessmentInfo,
-                        assessmentStructure: transferObject
-                    }
-                },
-                type: 'POST',
-                success: function (data) {
-                    if (!data.error) {
-                        console.log("errors: ", data);
-                    }
-                }
-            });
+            else {
+                rowsHolding.splice(selectedindexes[0], 0, rowsChecked);
+            }
+            break;
+        case "down":
+            rowsHolding.splice(selectedindexes[0] + 1, 0, rowsChecked);
             break;
     }
+    $(targetGrid).jqxGrid('clear');
+    for (var k = 0; k < rowsHolding.length; k++) {
+        $(targetGrid).jqxGrid('addrow', k, rowsHolding[k]);
+    }
+};
+var DeleteSelectedRows;
+DeleteSelectedRows = function (targetGrid) {
+    var rows = $(targetGrid).jqxGrid('getrows');
+    var deleteThese = [];
+    for (var i = 0; i < rows.length; i++) {
+        var id = $(targetGrid).jqxGrid('getrowid', i);
+        if (rows[i].checkbox == "checked") {
+            deleteThese.push(id);
+        }
+    }
+    for (var i = 0; i < deleteThese.length; i++) {
+        $(targetGrid).jqxGrid('deleterow', deleteThese[i]);
+    }
+};
+var AddRow;
+AddRow = function (target) {
+    $(target).jqxGrid('addrow', null, {}, 'first');
+};
+var StatusbarInteractions;
+StatusbarInteractions = function (target) {
+    $("#add-new").click(function () { $(target).jqxGrid('addrow', null, {}, 'last'); });
+    $("#delete").click(function () { DeleteSelectedRows("#subPortfoliosGrid"); });
+    $("#saveAll").click(function () { SaveAll("#subPortfoliosGrid"); });
+    $("#duplicate").click(function () { DuplicateSelected("#subPortfoliosGrid"); });
+    $("#move-up").click(function () { ReorderRows("#subPortfoliosGrid", "up"); });
+    $("#move-down").click(function () { ReorderRows("#subPortfoliosGrid", "down"); });
+    $("#saveAll").click(function () { SaveLoad("#subPortfoliosGrid", "SaveNew"); });
+};
+var returnedDataStructure = {
+    quizInfo: "",
+    quizStructure: "",
+    responsesData: ""
 };
 var headerSettings = {
     headerType: "greenSingleLine"
 };
-var quizStructure = [];
+var returnedData = [];
 var MakeHeaderFunc;
 MakeHeaderFunc = function (settings, target, template) {
     var headerSettings = settings;
@@ -660,21 +632,54 @@ var headerMenuSetup = [
         id: "#dashboard",
         action: headerAction
     }];
+var HeaderMenu;
+HeaderMenu = function (situation) {
+    switch (situation) {
+        case "initialize":
+            for (var i = 0; i < headerMenuSetup.length; i++) {
+                headerMenuSetup[i].action();
+            }
+            break;
+        case headerMenuSetup[0].id:
+            console.log(headerMenuSetup[0].id);
+            Navigation(navStates.home);
+            break;
+        case headerMenuSetup[1].id:
+            console.log(headerMenuSetup[1].id);
+            Navigation(navStates.createHome);
+            break;
+        case headerMenuSetup[2].id:
+            Navigation("fillOutAssessments");
+            break;
+        case headerMenuSetup[3].id:
+            console.log(headerMenuSetup[3].id);
+            break;
+    }
+};
+var selectedAssessment;
+var currentNav = { screen: "", hasGrid: "" };
 var createGenSettings;
 createGenSettings = function (template) {
     $("#generalSettings-app").append(template);
 };
-var HeaderMenu;
 var Navigation;
 Navigation = function (navigation, dataStructure) {
     var quizStructure = dataStructure;
     switch (navigation) {
-        case navStates.createItem:
+        case navStates.home:
+            $("#sizing-container").empty();
+            break;
+        case "CreateNewAssessment":
+            currentNav = { screen: "CreateNewAssessment", hasGrid: false };
             $("#sizing-container").empty().append(editItemTemplate);
             subPortfoliosGrid.createGrid();
+            GridInteractions("#subPortfoliosGrid");
+            StatusbarInteractions("#subPortfoliosGrid");
             createGenSettings(generalInfoTemplate);
             CreateFlyouts("#flyout-app", flyoutTemplate);
-            StatusbarInteractions("#subPortfoliosGrid");
+            setTimeout(function () {
+                SizeGridFunc("#subPortfoliosGrid");
+            }, 400);
             ManageFocus("", "initial");
             selectedCells = $("#subPortfoliosGrid").jqxGrid('getselectedcells');
             if (selectedCells.length == 0) {
@@ -689,97 +694,211 @@ Navigation = function (navigation, dataStructure) {
             }
             break;
         case navStates.createHome:
-            LoadExisting("LoadAllAssessments");
+            currentNav = { screen: "CreateNewAssessment", hasGrid: false };
+            SaveLoad('#subPortfoliosGrid', 'loadAll');
             break;
         case "createHome-complete":
-            $("#sizing-container").empty();
-            $("#sizing-container").append(assessmentsListHeader);
-            console.log("Quiz Structure", quizStructure);
-            for (var i = 0; i < quizStructure.length; i++) {
+            $("#sizing-container").empty().append(assessmentsListHeader);
+            $("#createNew").click(function () {
+                Navigation("CreateNewAssessment");
+            });
+            for (var i = 0; i < returnedData.length; i++) {
                 var templateHolder = assessmentsListItem;
-                templateHolder = templateHolder.replace("{{title}}", quizStructure[i].name);
-                templateHolder = templateHolder.replace("{{author}}", quizStructure[i].AuthorName);
-                templateHolder = templateHolder.replace("{{corpID}}", quizStructure[i].AuthorID);
-                templateHolder = templateHolder.replace("{{whatIsAssessed}}", quizStructure[i].whatIsAssessed);
-                templateHolder = templateHolder.replace("{{btnID}}", quizStructure[i].name + "Edit");
+                templateHolder = templateHolder.replace("{{title}}", returnedData[i].assessmentsname);
+                templateHolder = templateHolder.replace("{{author}}", returnedData[i].yourName);
+                templateHolder = templateHolder.replace("{{corpID}}", returnedData[i].corpID);
+                templateHolder = templateHolder.replace("{{whatIsAssessed}}", returnedData[i].explain);
+                templateHolder = templateHolder.replace("{{btnID}}", returnedData[i].assessmentsname);
                 $("#sizing-container").append(templateHolder);
             }
+            $(".editAssessment").unbind().click(function () {
+                selectedAssessment = this.id;
+                Navigation("editSelectedAssessment");
+            });
             break;
-        case navStates.fillOutHome:
+        case "fillOutAssessments":
+            currentNav = { screen: "fillOutAssessments", hasGrid: false };
+            $.ajax({
+                url: 'api.php',
+                data: { loadAll: 'loadAll' },
+                type: 'POST',
+                success: function (data) {
+                    if (!data.error) {
+                        returnedData = JSON.parse(data);
+                        Navigation("fillOutAssessments-complete");
+                    }
+                }
+            });
+            break;
+        case "fillOutAssessments-complete":
+            $("#sizing-container").empty().append(fillOutListHeader);
+            for (var i = 0; i < returnedData.length; i++) {
+                var templateHolder = assessmentsListItem;
+                templateHolder = templateHolder.replace("{{title}}", returnedData[i].yourName);
+                templateHolder = templateHolder.replace("{{author}}", returnedData[i].yourName);
+                templateHolder = templateHolder.replace("{{corpID}}", returnedData[i].corpID);
+                templateHolder = templateHolder.replace("{{whatIsAssessed}}", returnedData[i].whatIsAssessed);
+                templateHolder = templateHolder.replace("{{btnID}}", returnedData[i].assessmentsname);
+                $("#sizing-container").append(templateHolder);
+            }
+            $(".editAssessment").click(function () {
+                selectedAssessment = this.id;
+                alert(this.id);
+                Navigation("fillOutSelected");
+            });
+            break;
+        case "fillOutSelected":
+            currentNav = { screen: "fillOutSelected", hasGrid: false };
             $("#sizing-container").empty();
-            break;
-    }
-};
-var LoadExisting;
-LoadExisting = function (situation, selectedItem) {
-    switch (situation) {
-        case "LoadAllAssessments":
-            var assessmentsList = [];
             $.ajax({
-                url: 'SaveLoad.php',
-                data: {
-                    loadAllAssessments: "load_assessments"
-                },
+                url: 'api.php',
+                data: { loadSpecific: selectedAssessment },
                 type: 'POST',
                 success: function (data) {
-                    if (!data.error) {
-                        var assessmentsAll = JSON.parse(data);
-                        console.log("return messages from server: ", assessmentsAll);
-                        Navigation("createHome-complete", assessmentsAll);
-                    }
-                    else { }
+                    returnedData = data;
+                    console.log(returnedData);
+                    Navigation("fillOutSelected-complete");
                 }
             });
             break;
-        case "LoadSelected":
-            var selectedTitle = selectedItem;
+        case "fillOutSelected-complete":
+            var templateHolder = fillOutAssessmentHeader;
+            templateHolder = templateHolder.replace("", "");
+            $("#sizing-container").append(returnedData);
+            break;
+        case "editSelectedAssessment":
             $.ajax({
-                url: 'LoadSelected.php',
-                data: {
-                    loadSelected: selectedItem
-                },
+                url: 'api.php',
+                data: { editSelectedAssessment: selectedAssessment },
                 type: 'POST',
                 success: function (data) {
                     if (!data.error) {
-                        var assessmentsAll = JSON.parse(data);
-                        console.log("return messages from server: ", assessmentsAll);
-                        quizStructure = assessmentsAll;
-                        Navigation("createHome-complete");
+                        var toJSON = JSON.parse(data);
+                        console.log("JSON for quiz part:", toJSON);
+                        returnedDataStructure.quizInfo = toJSON[0];
+                        var someStr = toJSON[1];
+                        var quizCleaned = someStr.replace(/^"?(.+?)"?$/, '$1');
+                        var quizData = JSON.parse(quizCleaned);
+                        returnedDataStructure.quizStructure = quizData;
+                        Navigation("editSelectedAssessment-getResponses", returnedDataStructure);
                     }
-                    else { }
                 }
             });
             break;
-    }
-};
-HeaderMenu = function (situation) {
-    switch (situation) {
-        case "initialize":
-            for (var i = 0; i < headerMenuSetup.length; i++) {
-                headerMenuSetup[i].action();
+        case "editSelectedAssessment-getResponses":
+            $.ajax({
+                url: 'api.php',
+                data: { getAssessmentResponses: selectedAssessment },
+                type: 'POST',
+                success: function (data) {
+                    if (!data.error) {
+                        console.log("toJson only parse: ", data);
+                        Navigation("editSelectedAssessment-complete", returnedDataStructure);
+                    }
+                }
+            });
+            break;
+        case "editSelectedAssessment-complete":
+            currentNav = { screen: "editSelectedAssessment", hasGrid: true };
+            $("#sizing-container").empty().append(editItemTemplate);
+            subPortfoliosGrid.createGrid();
+            GridInteractions("#subPortfoliosGrid");
+            StatusbarInteractions("#subPortfoliosGrid");
+            createGenSettings(generalInfoTemplate);
+            SizeGridFunc("#subPortfoliosGrid");
+            CreateFlyouts("#flyout-app", flyoutTemplate);
+            ManageFocus("", "initial");
+            selectedCells = $("#subPortfoliosGrid").jqxGrid('getselectedcells');
+            if (selectedCells.length == 0) {
+                $("#obscure-settings").hide();
+                $("#flyout").hide();
+            }
+            $("#author-name").val(dataStructure.quizInfo.yourName);
+            $("#author-corpid").val(dataStructure.quizInfo.corpID);
+            $("#assess-name").val(dataStructure.quizInfo.assessmentsname);
+            $("#assess-this").val(dataStructure.quizInfo.whatIsAssessed);
+            console.log("responsesDAta", dataStructure.responsesData);
+            var quizStructure = dataStructure.quizStructure;
+            $('#subPortfoliosGrid').jqxGrid('clear');
+            for (var i = 0; i < quizStructure.length; i++) {
+                var rowItem = {
+                    checkbox: "unchecked",
+                    explain: dataStructure.quizStructure[i].explain,
+                    mainQuestion: dataStructure.quizStructure[i].mainQuestion,
+                    required: dataStructure.quizStructure[i].required,
+                    section: dataStructure.quizStructure[i].section,
+                    responses: dataStructure.quizStructure[i].responses
+                };
+                var value = $('#subPortfoliosGrid').jqxGrid('addrow', i, rowItem);
             }
             break;
-        case headerMenuSetup[0].id:
-            console.log(headerMenuSetup[0].id);
-            Navigation(navStates.createHome);
+    }
+};
+var SaveLoad;
+SaveLoad = function (grid, situation, selectedItem) {
+    switch (situation) {
+        case "SaveNew":
+            var rows = $(grid).jqxGrid('getrows');
+            var assessment = {};
+            var assessmentStructure = [];
+            var responsesData = "";
+            var assessmentInfo = {
+                whatIsAssessed: $("#assess-this").val(),
+                AssessmentName: $("#assess-name").val(),
+                YourName: $("#author-name").val(),
+                CorpID: $("#author-corpid").val(),
+                emailList: $("#email-list").val(),
+            };
+            for (var i = 0; i < rows.length; i++) {
+                var rowObj = {
+                    section: rows[i].section,
+                    checkbox: rows[i].checkbox,
+                    explain: rows[i].explain,
+                    mainQuestion: rows[i].mainQuestion,
+                    required: rows[i].required,
+                    responses: rows[i].responses
+                };
+                responsesData = responsesData + rows[i].responsesData;
+                assessmentStructure.push(rowObj);
+            }
+            assessment = {
+                assessmentInfo: assessmentInfo,
+                assessmentStructure: assessmentStructure,
+                responsesData: responsesData
+            };
+            $.ajax({
+                url: 'api.php',
+                data: { assessment: assessment },
+                type: 'POST',
+                success: function (data) {
+                    if (!data.error) {
+                        console.log("returned data: ", data);
+                    }
+                }
+            });
             break;
-        case headerMenuSetup[1].id:
-            console.log(headerMenuSetup[1].id);
-            Navigation(navStates.fillOutHome);
-            break;
-        case headerMenuSetup[2].id:
-            console.log(headerMenuSetup[2].id);
-            break;
-        case headerMenuSetup[3].id:
-            console.log(headerMenuSetup[3].id);
+        case 'loadAll':
+            $.ajax({
+                url: 'api.php',
+                data: { loadAll: 'loadAll' },
+                type: 'POST',
+                success: function (data) {
+                    if (!data.error) {
+                        returnedData = JSON.parse(data);
+                        Navigation("createHome-complete");
+                    }
+                }
+            });
+            Navigation("createHome-complete");
             break;
     }
 };
+var statusBarTemplate = "\n\n<nav class=\"navbar grid-footer\">\n  <div class=\"container-fluid footer-menu width-full\">\n   <ul class=\"nav navbar-nav width-full\">\n      <li><button id=\"add-new\" class=\"btn btn-apply\"><div class=\"btn-label\">Add New Question</div> <div class=\"icon-add statusbar-icon\"></div></button> </li>\n      <li><button id=\"duplicate\" class=\"btn btn-apply\"><div class=\"btn-label\">Duplicate Selected </div><div class=\"icon-dup statusbar-icon\"></div></button></li>\n      \n      \n      <li><button id=\"move-up\" class=\"btn btn-apply\"><div class=\"icon-up statusbar-icon\"> </div></button></li>\n      <li><button id=\"move-down\" class=\"btn btn-apply\"><div class=\"icon-down statusbar-icon\"> </div></button></li>\n      \n      <li><button id=\"delete\" class=\"btn btn-delete\"><div class=\"btn-label\">Delete Selected</div> <div class=\"icon-delete statusbar-icon\"></div></button></li>\n      <li class=\"btn-save\"><button id=\"saveAll\" class=\"btn btn-saveAll \"><div class=\"btn-label\">Save Assessment</div>  <div class=\"icon-save statusbar-icon\"></div> </button></li>\n    </ul>\n  </div>\n</nav>\n";
 var appSettings = {
     creationGrid: ""
 };
 var navStates = { home: 1, createHome: 2, createItem: 3, fillOutHome: 4, fillOutItem: 5, dashboard: 6 };
-var currentNav = navStates.home;
+var currentNav = "home";
 $(document).ready(function () {
     MakeHeaderFunc(headerSettings, "#main-header", singleLineHeaderTemplate);
     Navigation(navStates.createItem);
@@ -793,7 +912,7 @@ $(document).ready(function () {
         GridInteractions("#subPortfoliosGrid");
     }, 300);
 });
-var generalInfoTemplate = "\n<div id=\"general-settings-app\">\n<div class=\"translucent\" id=\"obscure-settings\"></div>\n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-this\">What is being assessed?</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-this\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-name\">Name this assessment:</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-name\">Your name:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-corpid\">Your Corporate ID number:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-corpid\">\n        </div>\n    </div>\n    \n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n             <div class=\"form-group\">\n              <label for=\"sel1\">Send this assessment to:</label>\n              <select class=\"form-control\" id=\"send-to\">\n                \n                <option>1</option>\n                <option>2</option>\n                <option>3</option>\n                <option>4</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          <div class=\"form-group\">\n              <label for=\"sel1\">Re-send the assessment this often:</label>\n              <select class=\"form-control\" id=\"sel1\">\n                <option>Once a month</option>\n                <option>Every quarter</option>\n                <option>Every 6 months</option>\n                <option>yearly</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          \n        </div>\n        <div class=\"col-lg-3\">            \n          \n        </div>\n     \n    \n</div>\n";
+var generalInfoTemplate = "\n<div id=\"general-settings-app\">\n<div class=\"translucent\" id=\"obscure-settings\"></div>\n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-this\">What is being assessed?</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-this\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"assess-name\">Name this assessment:</label>\n          <input type=\"text\" class=\"form-control\" id=\"assess-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-name\">Your name:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-name\">\n        </div>\n        <div class=\"col-lg-3\">            \n          <label for=\"author-corpid\">Your Corporate ID number:</label>\n          <input type=\"text\" class=\"form-control\" id=\"author-corpid\">\n        </div>\n    </div>\n    \n    <div class=\"row\">\n        <div class=\"col-lg-3\">            \n             <div class=\"form-group\">\n              <label for=\"sel1\">Send to (List of Corporate IDs and Name pairs):</label>\n          <input type=\"text\" class=\"form-control\" id=\"email-list\">\n             </div>\n        </div>\n        <div class=\"col-lg-3\">            \n          <div class=\"form-group\">\n              <label for=\"sel1\">Re-send the assessment this often:</label>\n              <select class=\"form-control\" id=\"sel1\">\n                <option>Once a month</option>\n                <option>Every quarter</option>\n                <option>Every 6 months</option>\n                <option>yearly</option>\n              </select>        \n             </div>\n        </div>\n        <div class=\"col-lg-3\">    \n        </div>\n        <div class=\"col-lg-3\"> \n        </div>\n     \n    \n</div>\n";
 var flyoutTemplate = "\n<div id=\"flyout\" class=\"app-window\" style=\"display: none;\">\n    <div id=\"edit-section\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">What section should this be grouped into?</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-section\">\n            </div>        \n    </div>\n\n    <div id=\"edit-question\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">Enter the question's text to display:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-question\">\n            </div>        \n    </div>\n    \n    <div id=\"edit-explain\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"input-section\">Provide an explanation or context that will help the user answer:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-explain\">\n            </div>        \n    </div>\n    \n    <div id=\"edit-response\" class=\"row\">\n            <div class=\"col-5up\">            \n              <label for=\"input-r1\">Rated 1 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r1\">\n            </div> \n            \n            <div class=\"col-5up\">            \n              <label for=\"input-r2\">Rated 2 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r2\">\n            </div>\n            \n            <div class=\"col-5up\">            \n              <label for=\"input-r3\">Rated 3 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r3\">\n            </div>\n                        \n            <div class=\"col-5up\">            \n              <label for=\"input-r4\">Rated 4 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r4\">\n            </div>\n                        \n             <div class=\"col-5up\">            \n              <label for=\"input-r5\">Rated 5 out of 5, criteria:</label>\n              <input type=\"text\" class=\"form-control\" id=\"input-r5\">\n            </div>           \n    </div>\n    \n    <div id=\"edit-required\" class=\"row\">\n            <div class=\"col-lg-12\">            \n              <label for=\"required-form\">Is this required?</label>\n              <form id=\"required-form\">\n                    <label class=\"radio-inline\">\n                      <input id=\"input-req\" type=\"radio\" name=\"opt-or-req\" value=\"required\" checked>Required\n                    </label>\n                    <label class=\"radio-inline\">\n                      <input id=\"input-opt\" type=\"radio\" name=\"opt-or-req\" value=\"optional\">Optional\n                    </label>                    \n              </form>\n            </div>        \n    </div>\n    <div class=\"row\">\n        <nav class=\"navbar flyout-footer\">\n          <div class=\"container-fluid flyout-menu\">\n           <ul class=\"nav navbar-nav\">\n              <li><button id=\"cancel-edit\" class=\"btn btn-cancel\">Cancel</button> </li>\n              <li><button id=\"apply\" class=\"btn btn-apply\">Apply</button></li>              \n            </ul>\n          </div>\n        </nav>\n    </div>\n</div>\n";
 var caratTemplate = "\n<div class=\"carat-down\" id=\"flyout-carat\"></div>\n";
 var RowManagement;
@@ -928,6 +1047,9 @@ var assessmentGridSettings = {
 };
 var subPortfoliosGrid = new GridCreation.CustomGrid("#subPortfoliosGrid", assessmentGridSettings);
 var editItemTemplate = "\n<div id=\"flyout-app\"></div>\n    <div id=\"generalSettings-app\" class=\"row\"></div>\n    <div class=\"row\"><div id=\"subPortfoliosGrid\" class=\"grid-base\"></div></div>\n";
-var assessmentsListItem = "\n<div class=\"row list-group-item\">\n    <div class=\"col-lg-3 col-md-3\">\n        <div class=\"row item-title\">{{title}}</div>\n        <div class=\"row item-author\">{{author}}</div>\n        <div class=\"row item-corpID\">{{corpID}}</div>\n    </div>\n    <div class=\"col-lg-7 col-sm-7\">{{whatIsAssessed}}</div>\n    <div class=\"col-lg-2 col-sm-2\"><button class=\"btn btn-apply\" id=\"{{btnID}}\">Edit</button></div>\n</div>\n";
-var assessmentsListHeader = "\n<h1>Edit Available Assessments</h1>\n\n";
+var assessmentsListItem = "\n<div class=\"row list-group-item\">\n    <div class=\"col-lg-3 col-md-3\">\n        <div class=\"row item-title\">{{title}}</div>\n        <div class=\"row item-author\">{{author}}</div>\n        <div class=\"row item-corpID\">{{corpID}}</div>\n    </div>\n    <div class=\"col-lg-7 col-sm-7\">{{whatIsAssessed}}</div>\n    <div class=\"col-lg-2 col-sm-2 vert-cen\">\n        <button class=\"btn btn-apply editAssessment\" id=\"{{btnID}}\">\n            <div class=\"btn-label\">Edit</div>\n            <div class=\"statusbar-icon icon-edit \"></div>\n        </button>\n    </div>\n</div>\n";
+var assessmentsListHeader = "\n<div class=\"row\">\n    <div style=\"display: inline-block\"><h1>Edit Available Assessments</h1></div>\n    <div style=\"display: inline-block\"> \n        <div style=\"display: inline-block\">or</div>\n        <div id=\"createNew\" class=\"btn btn-saveAll\">\n            <div class=\"btn-label\">Create New</div>\n            <div class=\"icon-newDoc statusbar-icon\"></div>\n        </div>\n    </div>\n</div>\n";
+var fillOutListHeader = "\n<h1>Fill Out Assessments</h1>\n\n";
+var fillOutAssessmentHeader = "\n    <div class=\"col-lg-4 col-md-4\">\n        <div class=\"row item-title\">{{title}}</div>\n        <div class=\"row item-author\">{{author}}</div>\n        <div class=\"row item-corpID\">{{corpID}}</div>\n    </div>\n    <div class=\"col-lg-8 col-md-8\">\n        <div class=\"row\">{{explanation}}</div>\n    </div>\n";
+var fillOutItem = "\n    <div class=\"row\">\n        <div class=\"col-lg-5 col-md-5 col-sm-8\">        \n            <div class=\"row assessment-title\" >\n                {{assessmentName}}\n            </div>\n            <div class=\"row assessment-title\" >\n                {{authorName}}\n            </div>\n            <div class=\"row assessment-title\" >\n                {{corpID}}\n            </div>\n        </div>\n        \n        <div class=\"col-lg-7\">\n            {{assessmentdescription}}\n        </div>\n        \n    </div>\n\n";
 //# sourceMappingURL=app.js.map

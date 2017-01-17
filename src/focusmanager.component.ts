@@ -157,26 +157,35 @@ ManageFocus = function (target, situation) {
 
                     if(cell.value != "undefined" && cell.value != null && cell.value != "" ){
                         var responsesObj = JSON.parse(cell.value);
-                        $("#input-r1").val(responsesObj.r1);
-                        $("#input-r2").val(responsesObj.r2);
-                        $("#input-r3").val(responsesObj.r3);
-                        $("#input-r4").val(responsesObj.r4);
-                        $("#input-r5").val(responsesObj.r5);
+
+                        setTimeout(function () {
+                            $("#input-r1").val(responsesObj.r1);
+                            $("#input-r2").val(responsesObj.r2);
+                            $("#input-r3").val(responsesObj.r3);
+                            $("#input-r4").val(responsesObj.r4);
+                            $("#input-r5").val(responsesObj.r5);
+                        }, 300);
+
                     }else if(cell.value == ""){
+                        setTimeout(function () {
+                            $("#input-r1").val("");
+                            $("#input-r2").val("");
+                            $("#input-r3").val("");
+                            $("#input-r4").val("");
+                            $("#input-r5").val("");
+                        }, 300);
+                    }
+
+
+                }else if(selectedCells.length > 1){
+                    setTimeout(function () {
                         $("#input-r1").val("");
                         $("#input-r2").val("");
                         $("#input-r3").val("");
                         $("#input-r4").val("");
                         $("#input-r5").val("");
-                    }
+                    }, 300)
 
-
-                }else if(selectedCells.length > 1){
-                    $("#input-r1").val("");
-                    $("#input-r2").val("");
-                    $("#input-r3").val("");
-                    $("#input-r4").val("");
-                    $("#input-r5").val("");
                 }
             }, 200);
 

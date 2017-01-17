@@ -38,44 +38,49 @@ interface iSizeGrid{
 var SizeGridFunc : iSizeGrid;
 
 SizeGridFunc = function (target) {
-    (<any>($(target).jqxGrid('autoresizecolumns')));
-    var columns : any = (<any>($(target).jqxGrid('columns')));
-    var columnsTotalWidth : number = 0;
-    for(var i:number = 0; i<columns.records.length-1; i++){
-        var indexColWidth = (<any>($(target).jqxGrid('getcolumnproperty', columns.records[i].datafield, 'width')));
-        var calcTotalWidth = columnsTotalWidth + indexColWidth;
-        columnsTotalWidth = calcTotalWidth;
+
+    if(currentNav.hasGrid == true) {
+
+
+        (<any>($(target).jqxGrid('autoresizecolumns')));
+        var columns: any = (<any>($(target).jqxGrid('columns')));
+        var columnsTotalWidth: number = 0;
+        for (var i: number = 0; i < columns.records.length - 1; i++) {
+            var indexColWidth = (<any>($(target).jqxGrid('getcolumnproperty', columns.records[i].datafield, 'width')));
+            var calcTotalWidth = columnsTotalWidth + indexColWidth;
+            columnsTotalWidth = calcTotalWidth;
+        }
+        //check if scrollbars are visible
+        var adjustedTarget = target.replace("#", "");
+        var scrollSelector = "#" + "verticalScrollBar" + adjustedTarget;
+        var scrollVis: any = $(scrollSelector).css('visibility');
+        if (scrollVis == "hidden") {
+            //console.log("scroll hidden")
+        } else if (scrollVis == "visible") {
+            var calcAdjusted: number = calcTotalWidth + 20;
+            calcTotalWidth = calcAdjusted;
+            console.log("scroll visible")
+        }
+        //
+
+        var totalGridWidth: number = $(target).width();
+        var remainder: number = totalGridWidth - calcTotalWidth;
+        var addThisToEachColumn = remainder / (columns.records.length - 2);
+
+        ///start loop at One because we want to ignore the checkbox column
+        for (var j: number = 1; j < columns.records.length - 1; j++) {
+            (<any>$(target).jqxGrid('autoresizecolumn', columns.records[j].datafield));
+            var indexColWidth = (<any>($(target).jqxGrid('getcolumnproperty', columns.records[j].datafield, 'width')));
+            (<any>($(target).jqxGrid('setcolumnproperty', columns.records[j].datafield, 'width', indexColWidth + addThisToEachColumn)));
+
+        }
+
+        //set the height so it fits on screen
+        var gridPosition = $(target).position();
+        var screenHeight = $(window).height();
+        var calculatedHeight = screenHeight - gridPosition.top - 20;
+        (<any>($(target).jqxGrid('height', calculatedHeight)));
     }
-    //check if scrollbars are visible
-    var adjustedTarget = target.replace("#","");
-    var scrollSelector = "#"+"verticalScrollBar"+adjustedTarget;
-    var scrollVis :any = $(scrollSelector).css('visibility');
-    if(scrollVis == "hidden"){
-        //console.log("scroll hidden")
-    }else if(scrollVis == "visible"){
-        var calcAdjusted:number = calcTotalWidth + 20;
-        calcTotalWidth = calcAdjusted;
-        console.log("scroll visible")
-    }
-    //
-
-    var totalGridWidth : number = $(target).width();
-    var remainder : number = totalGridWidth - calcTotalWidth;
-    var addThisToEachColumn = remainder/(columns.records.length-2);
-
-    ///start loop at One because we want to ignore the checkbox column
-    for(var j:number = 1; j< columns.records.length-1; j++){
-        (<any>$(target).jqxGrid('autoresizecolumn',columns.records[j].datafield));
-        var indexColWidth = (<any>($(target).jqxGrid('getcolumnproperty', columns.records[j].datafield, 'width')));
-        (<any>($(target).jqxGrid('setcolumnproperty', columns.records[j].datafield, 'width', indexColWidth+addThisToEachColumn )));
-
-    }
-
-    //set the height so it fits on screen
-    var gridPosition = $(target).position();
-    var screenHeight = $(window).height();
-    var calculatedHeight = screenHeight - gridPosition.top -20;
-    (<any>($(target).jqxGrid('height', calculatedHeight)));
 
 }
 
