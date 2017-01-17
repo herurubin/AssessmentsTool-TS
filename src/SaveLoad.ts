@@ -213,7 +213,7 @@ Navigation = function (navigation, dataStructure) {
                 templateHolder = templateHolder.replace("{{title}}",returnedData[i].assessmentsname);
                 templateHolder = templateHolder.replace("{{author}}",returnedData[i].yourName);
                 templateHolder = templateHolder.replace("{{corpID}}",returnedData[i].corpID);
-                templateHolder = templateHolder.replace("{{whatIsAssessed}}",returnedData[i].explain);
+                templateHolder = templateHolder.replace("{{whatIsAssessed}}",returnedData[i].whatIsAssessed);
                 templateHolder = templateHolder.replace("{{btnID}}",returnedData[i].assessmentsname);
 
                 $("#sizing-container").append(templateHolder);
@@ -248,7 +248,7 @@ Navigation = function (navigation, dataStructure) {
             for (var i:number=0; i<returnedData.length; i++){
 
                 var templateHolder :string = assessmentsListItem;
-                templateHolder = templateHolder.replace("{{title}}",returnedData[i].yourName);
+                templateHolder = templateHolder.replace("{{title}}",returnedData[i].assessmentsname);
                 templateHolder = templateHolder.replace("{{author}}",returnedData[i].yourName);
                 templateHolder = templateHolder.replace("{{corpID}}",returnedData[i].corpID);
                 templateHolder = templateHolder.replace("{{whatIsAssessed}}",returnedData[i].whatIsAssessed);
